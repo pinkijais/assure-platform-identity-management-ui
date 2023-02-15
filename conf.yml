@@ -1,0 +1,61 @@
+############################################################################################################
+####################################### MODIFICATION AREA ###################################################
+######################## Modify these values according to your project needs.  ##############################
+### Rest of customizable values are listed in README.md section 2.1.3 Common custom configuration values  ###
+############################## Only modify them is special behaviour is needed ##############################
+#############################################################################################################
+
+#### Name of current repository for validation. It has to match the name of the repository where this file is.
+repositoryName: "assure-platform-identity-management-ui"
+
+# Pipeline to be executed.
+# It has to match the constants defined in the Assure Library (pipelineRunner.groovy).
+# It does not need to be modify for standard -deploy projects (value='TERRAFORM_DEPLOY_PIPELINE')
+pipelineType: "UI_PIPELINE"
+
+#### Artifactory
+artifactRepository: "assure-generic"
+artifactPath: "assure-platform/identity-management/identity-management-ui/bundle"     #i.e: "assure-tools/solution-composer-service/solution-composer/ui/bundle"
+
+##### Zip (zip)
+targetZipName: "identity-management-ui"  #i.e: "solution-composer-ui"
+zipSourceFolder: "./build"                         #i.e: "./build"
+
+##### Set version parameters (setup)
+dependenciesPackageFile: "package.json"
+dependenciesPackagePath: ""
+dependenciesPackageAttribute: "version"
+
+### Tests
+testCommands:
+  - "npm install"
+  - "npm run test:ci"
+
+
+### node version
+nodeVersion: 14
+npmVersion: 6
+
+#############################################################################################################
+################################### END OF MODIFICATION AREA ################################################
+#############################################################################################################
+
+##### Notification (post)
+sendMail: "false"
+emailFrom: "no-reply@platformdxc-mg.com"
+emailTo: ""
+attachmentFileEmail: ""
+
+##### Name of the organization where the Siver Image has to be created.
+silverImageOrganization: "dxc-assure-tfapi"
+
+##### GitHub data #####
+gitHubCredential: "assure-github"
+gitEmail: "jenkins@dxc.com"
+gitUsername: "Jenkins User"
+
+#### Jenkins Assure library Repo values #####
+libraryOrg: "diaas"
+libraryRepo: "assure-platform-jenkins-projects-library"
+libraryBranch: "master"
+libraryRunnerPath: "/src/org/assure/jenkins/pipelineRunner.groovy"
